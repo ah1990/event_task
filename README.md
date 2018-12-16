@@ -12,6 +12,10 @@ rake db:seed
 
 rails s
 ```
+**Tests**
+```bash
+rspec spec/
+```
 
 **Notes:**
 Client part not done yet.
