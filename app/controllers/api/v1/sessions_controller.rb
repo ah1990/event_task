@@ -1,5 +1,4 @@
 class Api::V1::SessionsController < Api::V1::ApplicationController
-  skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_request
 
   def login
@@ -32,7 +31,6 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
       email: params[:email],
       password: params[:password]
     )
-    byebug
     if action.result&.errors.present?
       render json: { error: action.result.errors.messages, message: 'Email или пароль неверны' }, status: :unauthorized
     else

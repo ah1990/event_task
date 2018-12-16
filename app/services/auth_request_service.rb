@@ -19,7 +19,6 @@ class AuthRequestService < BaseService
     if @decoded_token
       @user = ::User.find(@decoded_token[:user_id])
     else
-      errors.add(:token, 'Invalid token')
       nil
     end
   end
@@ -28,7 +27,6 @@ class AuthRequestService < BaseService
     if @headers['Authorization'].present?
       @headers['Authorization'].split(' ').last
     else
-      errors.add(:token, 'Missing token')
       nil
     end
   end

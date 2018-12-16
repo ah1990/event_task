@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_110348) do
+ActiveRecord::Schema.define(version: 2018_12_16_135714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2018_12_16_110348) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "event_filters", force: :cascade do |t|
+    t.string "name"
+    t.json "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_event_filters_on_user_id"
   end
 
   create_table "event_topics", force: :cascade do |t|
@@ -55,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_12_16_110348) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "event_filters", "users"
   add_foreign_key "event_topics", "events"
   add_foreign_key "event_topics", "topics"
   add_foreign_key "events", "cities"

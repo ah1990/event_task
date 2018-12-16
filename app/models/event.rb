@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  include EventRepository
 
   belongs_to :city
   has_many :event_topics, dependent: :destroy
