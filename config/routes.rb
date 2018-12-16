@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post 'login', to: 'sessions#login'
       post 'sign_up', to: 'sessions#sign_up'
 
-      resources :events, only: :index
+      resources :events, only: %i(index create)
       resources :event_filters, only: %i[index create]
     end
   end

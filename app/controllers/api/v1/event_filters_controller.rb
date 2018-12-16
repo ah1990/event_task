@@ -20,9 +20,9 @@ class Api::V1::EventFiltersController < Api::V1::ApplicationController
 
   def filter_params
     q = {}
-    q = q.merge({ city_id: params[:city_id].to_i }) if params[:city_id].present?
-    q = q.merge({ start_at: params[:start_at] }) if params[:start_at].present?
-    q = q.merge({ end_at: params[:end_at] }) if params[:end_at].present?
-    q.merge({ topic_id: params[:topic_id].to_i }) if params[:topic_id].present?
+    q.merge!({ city_id: params[:city_id].to_i }) if params[:city_id].present?
+    q.merge!({ start_at: params[:start_at] }) if params[:start_at].present?
+    q.merge!({ end_at: params[:end_at] }) if params[:end_at].present?
+    q.merge!({ topic_id: params[:topic_id].to_i }) if params[:topic_id].present?
   end
 end
