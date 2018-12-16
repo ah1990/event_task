@@ -29,5 +29,13 @@ module EventTask
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.eager_load_paths << "#{Rails.root}/lib"
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post delete put patch options head]
+      end
+    end
   end
 end
