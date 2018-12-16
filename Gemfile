@@ -44,6 +44,9 @@ gem 'rack-cors'
 
 gem 'dotenv-rails'
 gem 'active_model_serializers'
+gem 'interactor'
+gem 'sidekiq'
+gem 'redis'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

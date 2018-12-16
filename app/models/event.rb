@@ -5,5 +5,5 @@ class Event < ApplicationRecord
   has_many :event_topics, dependent: :destroy
   has_many :topics, through: :event_topics
 
-  validates :start_at, :end_at, presence: true
+  validates :name, :start_at, :end_at, presence: true
 end
