@@ -1,24 +1,18 @@
-# README
+# Events Service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Installation
 
-Things you may want to cover:
+**In console**
+```bash
+bundle install
+yarn
+rake db:create
+rake db:migrate
+rake db:seed
 
-* Ruby version
+rails s
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Notes:**
+Client part not done yet.
+After add web push and email notifications 
