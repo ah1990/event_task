@@ -13,7 +13,7 @@ module EventRepository
                 end_at: filter[:end_at] }) if filter[:start_at].present? && filter[:end_at].present?
       e = e.where('topics.id = :topic_id',
               { topic_id: filter[:topic_id].to_i }) if filter[:topic_id].present? && filter[:topic_id].to_i != 0
-      e
+      e.distinct
     end
   end
 end

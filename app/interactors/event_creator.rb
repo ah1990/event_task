@@ -5,8 +5,8 @@ class EventCreator
   def call
     context.event = Event.new
     context.event.name = context.event_name
-    context.event.start_at = context.start_at
-    context.event.end_at = context.end_at
+    context.event.start_at = context.start_at || DateTime.now
+    context.event.end_at = context.end_at || DateTime.now
     context.event.city_id = context.city_id
     context.fail!(error: context.event.errors.messages) unless context.event.save
 
