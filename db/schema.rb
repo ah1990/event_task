@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_15_084429) do
+ActiveRecord::Schema.define(version: 2018_12_16_110348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_topics", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_topics_on_event_id"
+    t.index ["topic_id"], name: "index_event_topics_on_topic_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_events_on_city_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -24,4 +55,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_084429) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "event_topics", "events"
+  add_foreign_key "event_topics", "topics"
+  add_foreign_key "events", "cities"
 end
