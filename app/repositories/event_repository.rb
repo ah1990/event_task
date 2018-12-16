@@ -5,7 +5,6 @@ module EventRepository
 
   included do
     scope :search_by_filters, ->(filter) do
-      byebug
       return unless filter.present?
       e = joins(:city, :topics)
       e = e.where('(cities.id = :city_id)',
